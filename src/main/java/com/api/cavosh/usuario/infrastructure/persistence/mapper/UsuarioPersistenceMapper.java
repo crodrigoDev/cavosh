@@ -39,7 +39,7 @@ public final class UsuarioPersistenceMapper {
     /**
      * Reconstruye un usuario de dominio a partir de una entidad obtenida por JPA
      *
-     * @param entity entidad JPA que desea persistir
+     * @param entity entidad JPA que se desea persistir
      * @return usuario de dominio reconstruido
      */
     public static Usuario toDomain(UsuarioEntity entity) {
