@@ -1,11 +1,11 @@
-package com.api.cavosh.usuario.infrastructure.persistence.mapper;
+package com.api.cavosh.usuario.infrastructure.adapter.out.persistence.mapper;
 
 import com.api.cavosh.usuario.domain.model.Usuario;
 import com.api.cavosh.usuario.domain.valueobject.Email;
 import com.api.cavosh.usuario.domain.valueobject.NombreCompleto;
 import com.api.cavosh.usuario.domain.valueobject.PasswordHash;
 import com.api.cavosh.usuario.domain.valueobject.UsuarioId;
-import com.api.cavosh.usuario.infrastructure.persistence.entity.UsuarioEntity;
+import com.api.cavosh.usuario.infrastructure.adapter.out.persistence.entity.UsuarioEntity;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

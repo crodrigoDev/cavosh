@@ -1,10 +1,10 @@
-package com.api.cavosh.usuario.infrastructure.persistence.repository;
+package com.api.cavosh.usuario.infrastructure.adapter.out.persistence.repository;
 
 import com.api.cavosh.usuario.domain.model.Usuario;
-import com.api.cavosh.usuario.domain.repository.UsuarioRepository;
+import com.api.cavosh.usuario.application.port.out.UsuarioRepository;
 import com.api.cavosh.usuario.domain.valueobject.Email;
 import com.api.cavosh.usuario.domain.valueobject.UsuarioId;
-import com.api.cavosh.usuario.infrastructure.persistence.mapper.UsuarioPersistenceMapper;
+import com.api.cavosh.usuario.infrastructure.adapter.out.persistence.mapper.UsuarioPersistenceMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

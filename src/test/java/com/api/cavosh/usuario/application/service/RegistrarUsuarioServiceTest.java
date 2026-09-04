@@ -5,7 +5,7 @@ import com.api.cavosh.usuario.application.exception.EmailAlreadyRegisteredExcept
 import com.api.cavosh.usuario.application.port.out.PasswordHasher;
 import com.api.cavosh.usuario.application.result.RegistrarUsuarioResult;
 import com.api.cavosh.usuario.domain.model.Usuario;
-import com.api.cavosh.usuario.domain.repository.UsuarioRepository;
+import com.api.cavosh.usuario.application.port.out.UsuarioRepository;
 import com.api.cavosh.usuario.domain.valueobject.Email;
 import com.api.cavosh.usuario.domain.valueobject.PasswordHash;
 import org.junit.jupiter.api.BeforeEach;

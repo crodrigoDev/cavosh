@@ -1,6 +1,6 @@
-package com.api.cavosh.usuario.infrastructure.persistence.repository;
+package com.api.cavosh.usuario.infrastructure.adapter.out.persistence.repository;
 
-import com.api.cavosh.usuario.infrastructure.persistence.entity.UsuarioEntity;
+import com.api.cavosh.usuario.infrastructure.adapter.out.persistence.entity.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

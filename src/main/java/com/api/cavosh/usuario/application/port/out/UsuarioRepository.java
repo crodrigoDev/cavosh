@@ -1,4 +1,4 @@
-package com.api.cavosh.usuario.domain.repository;
+package com.api.cavosh.usuario.application.port.out;
 
 import com.api.cavosh.usuario.domain.model.Usuario;
 import com.api.cavosh.usuario.domain.valueobject.Email;

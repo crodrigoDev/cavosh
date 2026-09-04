@@ -1,4 +1,4 @@
-package com.api.cavosh.usuario.infrastructure.persistence.entity;
+package com.api.cavosh.usuario.infrastructure.adapter.out.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

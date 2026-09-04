@@ -1,4 +1,4 @@
-package com.api.cavosh.shared.web.response;
+package com.api.cavosh.shared.adapter.in.web.response;
 
 import org.springframework.http.HttpStatus;
 
