@@ -1,3 +1,20 @@
 spring:
   application:
     name: cavosh
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:${POSTGRES_PORT:5432}/${POSTGRES_DB:cavosh}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
