@@ -15,6 +15,9 @@ import java.time.Clock;
 import java.time.Instant;
 import java.util.Objects;
 
+/**
+ * Implementa el caso de uso de registro de usuarios.
+ */
 public final class RegistrarUsuarioService implements RegistrarUsuarioUseCase {
 
     private final UsuarioRepository usuarioRepository;
@@ -54,7 +57,7 @@ public final class RegistrarUsuarioService implements RegistrarUsuarioUseCase {
      * @return informacion segura del usuario creado
      * @throws EmailAlreadyRegisteredException si el email ya se encuentra registrado
      * @throws IllegalArgumentException si la contraseña esta vacia o los datos
-     *                                  cumplen las reglas del dominio
+     *                                  no cumplen las reglas del dominio
      */
     @Override
     public RegistrarUsuarioResult ejecutar(RegistrarUsuarioCommand command) {
