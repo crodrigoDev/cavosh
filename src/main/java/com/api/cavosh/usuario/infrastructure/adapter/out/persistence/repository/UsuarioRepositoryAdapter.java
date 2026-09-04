@@ -5,6 +5,7 @@ import com.api.cavosh.usuario.application.port.out.UsuarioRepository;
 import com.api.cavosh.usuario.domain.valueobject.Email;
 import com.api.cavosh.usuario.domain.valueobject.UsuarioId;
 import com.api.cavosh.usuario.infrastructure.adapter.out.persistence.mapper.UsuarioPersistenceMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -12,21 +13,11 @@ import java.util.Optional;
 /**
  * Implementa el repositorio de dominio de usuarios mediante Spring Data JPA
  */
+@RequiredArgsConstructor
 @Repository
 public class UsuarioRepositoryAdapter implements UsuarioRepository {
 
-    private final UsuarioJpaRepository usuarioJpaRepository;
-
-    /**
-     * Crea el adaptador con el repositorio JPA requerido
-     *
-     * @param usuarioJpaRepository repositorio JPA de usuarios
-     */
-    public UsuarioRepositoryAdapter(
-            UsuarioJpaRepository usuarioJpaRepository
-    ){
-        this.usuarioJpaRepository = usuarioJpaRepository;
-    }
+    private final UsuarioJpaRepository usuarioJpaRepository; // repositorio JPA de usuarios
 
     /**
      * Determina si existe un usuario con el email indicado
