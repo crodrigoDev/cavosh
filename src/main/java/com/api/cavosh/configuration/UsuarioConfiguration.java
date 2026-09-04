@@ -6,7 +6,6 @@ import com.api.cavosh.usuario.application.port.out.UsuarioRepository;
 import com.api.cavosh.usuario.application.service.RegistrarUsuarioService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.Clock;
 
