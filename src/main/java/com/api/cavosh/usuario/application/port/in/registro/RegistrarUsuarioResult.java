@@ -1,4 +1,4 @@
-package com.api.cavosh.usuario.application.result;
+package com.api.cavosh.usuario.application.port.in.registro;
 
 import com.api.cavosh.usuario.domain.valueobject.UsuarioId;
 

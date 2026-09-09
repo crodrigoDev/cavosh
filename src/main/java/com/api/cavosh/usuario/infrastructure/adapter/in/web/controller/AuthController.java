@@ -1,9 +1,9 @@
 package com.api.cavosh.usuario.infrastructure.adapter.in.web.controller;
 
 import com.api.cavosh.shared.adapter.in.web.response.ApiResponse;
-import com.api.cavosh.usuario.application.command.RegistrarUsuarioCommand;
-import com.api.cavosh.usuario.application.port.in.RegistrarUsuarioUseCase;
-import com.api.cavosh.usuario.application.result.RegistrarUsuarioResult;
+import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioCommand;
+import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioUseCase;
+import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioResult;
 import com.api.cavosh.usuario.infrastructure.adapter.in.web.mapper.UsuarioWebMapper;
 import com.api.cavosh.usuario.infrastructure.adapter.in.web.request.RegistrarUsuarioRequest;
 import com.api.cavosh.usuario.infrastructure.adapter.in.web.response.RegistrarUsuarioResponse;

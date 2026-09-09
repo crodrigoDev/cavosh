@@ -1,6 +1,6 @@
 package com.api.cavosh.configuration;
 
-import com.api.cavosh.usuario.application.port.in.RegistrarUsuarioUseCase;
+import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioUseCase;
 import com.api.cavosh.usuario.application.port.out.PasswordHasher;
 import com.api.cavosh.usuario.application.port.out.UsuarioRepository;
 import com.api.cavosh.usuario.application.service.RegistrarUsuarioService;

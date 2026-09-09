@@ -1,6 +1,6 @@
 package com.api.cavosh.usuario.infrastructure.adapter.in.web.mapper;
 
-import com.api.cavosh.usuario.application.result.RegistrarUsuarioResult;
+import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioResult;
 import com.api.cavosh.usuario.domain.valueobject.UsuarioId;
 import com.api.cavosh.usuario.infrastructure.adapter.in.web.response.RegistrarUsuarioResponse;
 import org.mapstruct.Mapper;

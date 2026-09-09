@@ -1,6 +1,5 @@
-package com.api.cavosh.usuario.application.port.out;
+package com.api.cavosh.usuario.application.port.out.token;
 
-import com.api.cavosh.usuario.domain.model.AccessToken;
 import com.api.cavosh.usuario.domain.model.Usuario;
 
 /**

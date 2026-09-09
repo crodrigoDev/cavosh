@@ -1,4 +1,4 @@
-package com.api.cavosh.usuario.domain.model;
+package com.api.cavosh.usuario.application.port.out.token;
 
 import java.util.Objects;
 

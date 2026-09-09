@@ -1,7 +1,4 @@
-package com.api.cavosh.usuario.application.port.in;
-
-import com.api.cavosh.usuario.application.command.LoginCommand;
-import com.api.cavosh.usuario.application.result.LoginResult;
+package com.api.cavosh.usuario.application.port.in.login;
 
 /**
  * Define la operacion disponible para iniciar sesion mediante contraseña

@@ -1,4 +1,4 @@
-package com.api.cavosh.usuario.application.command;
+package com.api.cavosh.usuario.application.port.in.registro;
 
 /**
  * Agrupa los datos que la aplicación necesita para registrar un Usuario

@@ -1,4 +1,4 @@
-package com.api.cavosh.usuario.application.command;
+package com.api.cavosh.usuario.application.port.in.login;
 
 /**
  * Agrupa las credenciales necesarias para iniciar sesión mediante contraseña
