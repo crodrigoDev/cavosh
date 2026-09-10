@@ -1,13 +1,12 @@
 package com.api.cavosh.configuration;
 
-import com.api.cavosh.configuration.properties.JwtProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -16,7 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
  * Configura componentes y reglas compartidas de seguridad de la aplicacion
  */
 @Configuration
-@EnableConfigurationProperties(JwtProperties.class)
 public class SecurityConfiguration {
 
     /**
@@ -35,7 +33,7 @@ public class SecurityConfiguration {
      *
      * @param http configuracion HTTP de Spring Security
      * @return cadena de filtros configurada
-     * @throws Exception si Spring Security no puede construit la cadena de filtros
+     * @throws Exception si Spring Security no puede construir la cadena de filtros
      */
     @Bean
     public SecurityFilterChain securityFilterChain(
@@ -60,6 +58,8 @@ public class SecurityConfiguration {
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(Customizer.withDefaults()))
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .logout(AbstractHttpConfigurer::disable)

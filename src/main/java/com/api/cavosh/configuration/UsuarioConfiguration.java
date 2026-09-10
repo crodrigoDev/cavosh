@@ -1,8 +1,11 @@
 package com.api.cavosh.configuration;
 
+import com.api.cavosh.usuario.application.port.in.login.LoginUseCase;
 import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioUseCase;
 import com.api.cavosh.usuario.application.port.out.PasswordHasher;
 import com.api.cavosh.usuario.application.port.out.UsuarioRepository;
+import com.api.cavosh.usuario.application.port.out.token.AccessTokenGenerator;
+import com.api.cavosh.usuario.application.service.LoginService;
 import com.api.cavosh.usuario.application.service.RegistrarUsuarioService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,6 +46,27 @@ public class UsuarioConfiguration {
                 usuarioRepository,
                 passwordHasher,
                 clock
+        );
+    }
+
+    /**
+     * Crea el caso de uso de inicio de sesion con sus puertos de salida
+     *
+     * @param usuarioRepository puerto utilizado para buscar usuarios
+     * @param passwordHasher puerto utilizado para verificar contraseñas
+     * @param accessTokenGenerator puerto utilizado para generar access tokens
+     * @return caso de uso de login listo para recibir solicitudes
+     */
+    @Bean
+    public LoginUseCase loginUseCase(
+            UsuarioRepository usuarioRepository,
+            PasswordHasher passwordHasher,
+            AccessTokenGenerator accessTokenGenerator
+    ) {
+        return new LoginService(
+                usuarioRepository,
+                passwordHasher,
+                accessTokenGenerator
         );
     }
 }

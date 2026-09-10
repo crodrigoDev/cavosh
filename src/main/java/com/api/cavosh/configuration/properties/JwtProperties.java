@@ -11,14 +11,14 @@ import java.util.Objects;
  * @param secretBase64 clave secreta codificada en Base64
  * @param issuer identificador del emisor del token
  * @param audience destinatario esperado del token
- * @param accessTokenExpiracion duracon del access token
+ * @param accessTokenExpiration duración del access token
  */
 @ConfigurationProperties(prefix = "cavosh.security.jwt")
 public record JwtProperties(
         String secretBase64,
         String issuer,
         String audience,
-        Duration accessTokenExpiracion
+        Duration accessTokenExpiration
 ) {
 
     /**
@@ -27,7 +27,7 @@ public record JwtProperties(
      * @param secretBase64 clave secreta codificada en Base64
      * @param issuer identificador del emisor del token
      * @param audience destinatario esperado del token
-     * @param accessTokenExpiracion duracion del access token
+     * @param accessTokenExpiration duracion del access token
      */
     public JwtProperties {
         validarTexto(secretBase64, "La clave JWT es obligatoria");
@@ -35,13 +35,13 @@ public record JwtProperties(
         validarTexto(audience, "La audiencia del JWT es obligatoria");
 
         Objects.requireNonNull(
-                accessTokenExpiracion,
+                accessTokenExpiration,
                 "La duracion del access token es obligatoria"
         );
 
-        if(accessTokenExpiracion.isZero() || accessTokenExpiracion.isNegative())
+        if (accessTokenExpiration.compareTo(Duration.ofSeconds(1)) < 0)
             throw new IllegalArgumentException(
-                    "La duracion del access token debe ser positiva"
+                    "La duracion del access token debe ser de al menos un segundo"
             );
     }
 

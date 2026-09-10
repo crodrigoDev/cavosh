@@ -19,9 +19,10 @@ spring:
     enabled: true
     locations: classpath:db/migration
 
+cavosh:
   security:
     jwt:
-      secret-base64: ${JWT_SECRET}
+      secret-base64: ${JWT_SECRET_BASE64}
       issuer: ${JWT_ISSUER:cavosh-auth}
       audience: ${JWT_AUDIENCE:cavosh-api}
       access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION:15m}
