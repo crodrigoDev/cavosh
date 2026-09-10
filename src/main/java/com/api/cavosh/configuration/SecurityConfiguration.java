@@ -1,5 +1,7 @@
 package com.api.cavosh.configuration;
 
+import com.api.cavosh.configuration.properties.JwtProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,6 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
  * Configura componentes y reglas compartidas de seguridad de la aplicacion
  */
 @Configuration
+@EnableConfigurationProperties(JwtProperties.class)
 public class SecurityConfiguration {
 
     /**

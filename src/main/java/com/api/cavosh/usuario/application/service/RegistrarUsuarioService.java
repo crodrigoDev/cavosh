@@ -71,9 +71,8 @@ public final class RegistrarUsuarioService implements RegistrarUsuarioUseCase {
         NombreCompleto nombreCompleto = new NombreCompleto(command.nombreCompleto());
         Email email = new Email(command.email());
 
-        if(usuarioRepository.existsByEmail(email)){
+        if(usuarioRepository.existsByEmail(email))
             throw new EmailAlreadyRegisteredException();
-        }
 
         PasswordHash passwordHash = passwordHasher.hash(command.password());
         Instant now = Instant.now(clock);
@@ -102,10 +101,9 @@ public final class RegistrarUsuarioService implements RegistrarUsuarioUseCase {
      * @throws IllegalArgumentException si la contraseña es nula o esta en blanco
      */
     private void validarPassword(String password) {
-        if(password == null || password.isBlank()){
+        if(password == null || password.isBlank())
             throw new IllegalArgumentException(
                     "La contraseña no puede estar vacia"
             );
-        }
     }
 }
