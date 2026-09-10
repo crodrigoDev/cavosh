@@ -3,7 +3,7 @@ package com.api.cavosh.usuario.application.exception;
 /**
  * Indica que las credenciales proporcionadas no pueden autenticar al usuario
  */
-public class InvalidCredentialsException extends RuntimeException {
+public final class InvalidCredentialsException extends RuntimeException {
 
     /**
      * Construye la excepcion con un mensaje generico para que no se revele
