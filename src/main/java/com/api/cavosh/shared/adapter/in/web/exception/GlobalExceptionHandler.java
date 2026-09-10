@@ -4,6 +4,7 @@ import com.api.cavosh.shared.adapter.in.web.mapper.ValidationErrorMapper;
 import com.api.cavosh.shared.adapter.in.web.response.ApiErrorResponse;
 import com.api.cavosh.shared.adapter.in.web.response.ApiFieldError;
 import com.api.cavosh.usuario.application.exception.EmailAlreadyRegisteredException;
+import com.api.cavosh.usuario.application.exception.InvalidCredentialsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,25 @@ public class GlobalExceptionHandler {
 
     private static final Logger LOGGER =
             LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    /**
+     * Responde cuando el email o la contraseña no son correctos.
+     *
+     * @param exception error producido durante el login
+     * @return respuesta HTTP 401
+     */
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ApiErrorResponse> handleInvalidCredentials(
+            InvalidCredentialsException exception
+    ) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                ApiErrorResponse.of(
+                        HttpStatus.UNAUTHORIZED,
+                        "INVALID_CREDENTIALS",
+                        exception.getMessage()
+                )
+        );
+    }
 
     /**
      * Responde cuando se intenta registrar un email que ya pertenece a otra cuenta
@@ -100,7 +120,7 @@ public class GlobalExceptionHandler {
                 ApiErrorResponse.of(
                         HttpStatus.INTERNAL_SERVER_ERROR,
                         "INTERNAL_ERROR",
-                        "Ocurrio un error inesperadoo"
+                        "Ocurrio un error inesperado"
                 )
         );
     }

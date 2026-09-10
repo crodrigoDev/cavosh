@@ -1,11 +1,16 @@
 package com.api.cavosh.usuario.infrastructure.adapter.in.web.controller;
 
 import com.api.cavosh.shared.adapter.in.web.response.ApiResponse;
+import com.api.cavosh.usuario.application.port.in.login.LoginCommand;
+import com.api.cavosh.usuario.application.port.in.login.LoginResult;
+import com.api.cavosh.usuario.application.port.in.login.LoginUseCase;
 import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioCommand;
 import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioUseCase;
 import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioResult;
 import com.api.cavosh.usuario.infrastructure.adapter.in.web.mapper.UsuarioWebMapper;
+import com.api.cavosh.usuario.infrastructure.adapter.in.web.request.LoginRequest;
 import com.api.cavosh.usuario.infrastructure.adapter.in.web.request.RegistrarUsuarioRequest;
+import com.api.cavosh.usuario.infrastructure.adapter.in.web.response.LoginResponse;
 import com.api.cavosh.usuario.infrastructure.adapter.in.web.response.RegistrarUsuarioResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +30,31 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final RegistrarUsuarioUseCase registrarUsuarioUseCase; //caso de uso de registro
+    private final LoginUseCase loginUseCase; // caso de uso de login
     private final UsuarioWebMapper usuarioWebMapper; // mapper de resultados de aplicacion a respuestas HTTP
+
+    /**
+     * Inicia sesion con el email y la contraseña recibidos.
+     *
+     * @param request datos enviados para iniciar sesion
+     * @return respuesta con el usuario y su access token
+     */
+    @PostMapping("/login")
+    public ResponseEntity<ApiResponse<LoginResponse>> login(
+            @Valid @RequestBody LoginRequest request
+    ) {
+        LoginCommand command = usuarioWebMapper.toCommand(request);
+        LoginResult result = loginUseCase.ejecutar(command);
+        LoginResponse response = usuarioWebMapper.toResponse(result);
+
+        return ResponseEntity.ok(
+                ApiResponse.success(
+                        HttpStatus.OK,
+                        "Inicio de sesión correcto",
+                        response
+                )
+        );
+    }
 
     /**
      * Registra un usuario nuevo a partir de los datos enviados por HTTP
