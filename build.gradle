@@ -21,6 +21,7 @@ repositories {
 def mapstructVersion = "1.6.3"
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-security-oauth2-resource-server'
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

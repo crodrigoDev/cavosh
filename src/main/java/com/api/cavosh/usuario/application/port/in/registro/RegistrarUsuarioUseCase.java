@@ -1,7 +1,4 @@
-package com.api.cavosh.usuario.application.port.in;
-
-import com.api.cavosh.usuario.application.command.RegistrarUsuarioCommand;
-import com.api.cavosh.usuario.application.result.RegistrarUsuarioResult;
+package com.api.cavosh.usuario.application.port.in.registro;
 
 /**
  * Puerto de entrada para registrar usuarios

@@ -1,10 +1,10 @@
 package com.api.cavosh.usuario.application.service;
 
-import com.api.cavosh.usuario.application.command.RegistrarUsuarioCommand;
+import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioCommand;
 import com.api.cavosh.usuario.application.exception.EmailAlreadyRegisteredException;
-import com.api.cavosh.usuario.application.port.in.RegistrarUsuarioUseCase;
+import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioUseCase;
 import com.api.cavosh.usuario.application.port.out.PasswordHasher;
-import com.api.cavosh.usuario.application.result.RegistrarUsuarioResult;
+import com.api.cavosh.usuario.application.port.in.registro.RegistrarUsuarioResult;
 import com.api.cavosh.usuario.domain.model.Usuario;
 import com.api.cavosh.usuario.application.port.out.UsuarioRepository;
 import com.api.cavosh.usuario.domain.valueobject.Email;
@@ -71,9 +71,8 @@ public final class RegistrarUsuarioService implements RegistrarUsuarioUseCase {
         NombreCompleto nombreCompleto = new NombreCompleto(command.nombreCompleto());
         Email email = new Email(command.email());
 
-        if(usuarioRepository.existsByEmail(email)){
+        if(usuarioRepository.existsByEmail(email))
             throw new EmailAlreadyRegisteredException();
-        }
 
         PasswordHash passwordHash = passwordHasher.hash(command.password());
         Instant now = Instant.now(clock);
@@ -102,10 +101,9 @@ public final class RegistrarUsuarioService implements RegistrarUsuarioUseCase {
      * @throws IllegalArgumentException si la contraseña es nula o esta en blanco
      */
     private void validarPassword(String password) {
-        if(password == null || password.isBlank()){
+        if(password == null || password.isBlank())
             throw new IllegalArgumentException(
                     "La contraseña no puede estar vacia"
             );
-        }
     }
 }

@@ -41,4 +41,19 @@ public class BCryptPasswordHasher implements PasswordHasher {
                 passwordEncoder.encode(password)
         );
     }
+
+    /**
+     * Comprueba si una contraseña corresponde al hash almacenado
+     *
+     * @param password contraseña recibida durante el login
+     * @param passwordHash hash almacenado del usuario
+     * @return {@code true} cuando la contraseña es correcta
+     */
+    @Override
+    public boolean matches(String password, PasswordHash passwordHash) {
+        return passwordEncoder.matches(
+                password,
+                passwordHash.value()
+        );
+    }
 }
