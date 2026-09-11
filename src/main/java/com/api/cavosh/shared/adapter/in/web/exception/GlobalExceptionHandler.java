@@ -1,5 +1,6 @@
 package com.api.cavosh.shared.adapter.in.web.exception;
 
+import com.api.cavosh.producto.application.exception.ProductoNotFoundException;
 import com.api.cavosh.shared.adapter.in.web.mapper.ValidationErrorMapper;
 import com.api.cavosh.shared.adapter.in.web.response.ApiErrorResponse;
 import com.api.cavosh.shared.adapter.in.web.response.ApiFieldError;
@@ -20,6 +21,25 @@ public class GlobalExceptionHandler {
 
     private static final Logger LOGGER =
             LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    /**
+     * Responde cuando el producto solicitado no esta disponible
+     *
+     * @param exception error producido al buscar el producto
+     * @return respuesta HTTP 404
+     */
+    @ExceptionHandler(ProductoNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleProductoNotFound(
+            ProductoNotFoundException exception
+    ) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                ApiErrorResponse.of(
+                        HttpStatus.NOT_FOUND,
+                        "PRODUCT_NOT_FOUND",
+                        exception.getMessage()
+                )
+        );
+    }
 
     /**
      * Responde cuando el email o la contraseña no son correctos.
